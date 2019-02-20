@@ -1,4 +1,4 @@
-import { PureComponent } from "react";
+import React, { PureComponent } from "react";
 import classNames from "classnames";
 import { Dropdown, Avatar, Spin, Menu, Icon } from "antd";
 import styles from "./index.less";

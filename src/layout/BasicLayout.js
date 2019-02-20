@@ -145,7 +145,7 @@ class BaseIcLayout extends React.Component {
     return (
       <Layout>
         <SiderMenu
-          logo={"../assets/logo.png"}
+          logo="../assets/logo.png"
           theme={navTheme}
           onCollapse={this.handleMenuCollapse}
           menuData={menuData}
@@ -160,7 +160,7 @@ class BaseIcLayout extends React.Component {
         >
           <Header
             isMobile={isMobile}
-            logo={"../assets/logo.png"}
+            logo="../assets/logo.png"
             handleMenuCollapse={this.handleMenuCollapse}
             {...this.props}
           />
