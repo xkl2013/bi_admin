@@ -1,60 +1,60 @@
-import { routerRedux } from "dva/router";
-import { message } from "antd";
-import { setAuthority, removeStorge } from "@/utils/authority";
-import { reloadAuthorized } from "@/utils/Authorized";
-import { fakeAccountLogin } from "../services/api";
+import { routerRedux } from 'dva/router';
+import { message } from 'antd';
+import { setAuthority, removeStorge } from '@/utils/authority';
+import { reloadAuthorized } from '@/utils/Authorized';
+import { fakeAccountLogin } from '../services/api';
 
 export default {
-  namespace: "login",
+  namespace: 'login',
 
   state: {
     loginStatusObj: {
-      msg: "",
-      status: false
-    }
+      msg: '',
+      status: false,
+    },
   },
   effects: {
     *login({ payload }, { call, put }) {
       const { username, password } = payload;
       const response = yield call(fakeAccountLogin, { username, password });
       yield put({
-        type: "changeLoginStatus",
-        payload: response
+        type: 'changeLoginStatus',
+        payload: response,
       });
       if (response.code === 2000) {
-        yield put(routerRedux.push("/"));
+        yield put(routerRedux.push('/'));
       } else {
         message.error(response.msg);
       }
     },
     *logout(_, { put }) {
-      removeStorge("dva-admin");
+      removeStorge('dva-admin');
       reloadAuthorized();
       yield put(
         routerRedux.push({
-          pathname: "/user/login"
+          pathname: '/user/login',
         })
       );
-    }
+    },
   },
 
   reducers: {
     changeLoginStatus(state, { payload }) {
       const status = payload.code === 2000;
       if (status) {
-        setAuthority("dva-admin", payload.currentAuthority);
+        setAuthority('dva-admin', payload.currentAuthority);
       }
       const loginStatusObj = {
         status,
-        msg: payload.msg
+        msg: payload.msg,
       };
       return {
         ...state,
-        loginStatusObj
+        loginStatusObj,
       };
     },
     save(state, action) {
       return { ...state, ...action.payload };
-    }
-  }
+    },
+  },
 };
