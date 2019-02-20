@@ -10,8 +10,8 @@ export default {
   state: {
     loginStatusObj: {
       msg: "",
-      status: false
-    }
+      status: false,
+    },
   },
   effects: {
     *login({ payload }, { call, put }) {
@@ -19,7 +19,7 @@ export default {
       const response = yield call(fakeAccountLogin, { username, password });
       yield put({
         type: "changeLoginStatus",
-        payload: response
+        payload: response,
       });
       if (response.code === 2000) {
         yield put(routerRedux.push("/"));
@@ -32,10 +32,10 @@ export default {
       reloadAuthorized();
       yield put(
         routerRedux.push({
-          pathname: "/user/login"
+          pathname: "/user/login",
         })
       );
-    }
+    },
   },
 
   reducers: {
@@ -46,15 +46,15 @@ export default {
       }
       const loginStatusObj = {
         status,
-        msg: payload.msg
+        msg: payload.msg,
       };
       return {
         ...state,
-        loginStatusObj
+        loginStatusObj,
       };
     },
     save(state, action) {
       return { ...state, ...action.payload };
-    }
-  }
+    },
+  },
 };
