@@ -35,16 +35,17 @@ class Login extends Component {
   };
 
   getChildContext() {
+    const { tabs } = this.state;
     return {
       tabUtil: {
         addTab: id => {
           this.setState({
-            tabs: [...this.state.tabs, id],
+            tabs: [tabs, id],
           });
         },
         removeTab: id => {
           this.setState({
-            tabs: this.state.tabs.filter(currentId => currentId !== id),
+            tabs: tabs.filter(currentId => currentId !== id),
           });
         },
       },
