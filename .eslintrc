@@ -1,6 +1,6 @@
 {
     "parser": "babel-eslint",
-    "extends": "airbnb",
+    "extends": ["airbnb","prettier"],
     "env": {
       "browser": true,
       "node": true,
@@ -10,7 +10,6 @@
       "jasmine": true
     },
     "rules": {
-        "arrow-parens":[0],
         "camelcase": [0],
         "no-underscore-dangle": [0],
         "no-unused-expressions": [0],
