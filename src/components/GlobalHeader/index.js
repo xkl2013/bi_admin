@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
 import { Link } from 'dva/router';
 import Debounce from 'lodash-decorators/debounce';

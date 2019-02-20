@@ -1,4 +1,4 @@
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'dva';
 import GlobalHeader from '@/components/GlobalHeader';
