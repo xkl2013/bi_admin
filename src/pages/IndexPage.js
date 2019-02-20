@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "dva";
-import { Button } from "antd";
-import PageHeaderWrapper from "@/components/PageHeaderWrapper";
-import styles from "./IndexPage.css";
+import React from 'react';
+import { connect } from 'dva';
+import { Button } from 'antd';
+import PageHeaderWrapper from '@/components/PageHeaderWrapper';
+import styles from './IndexPage.css';
 
 class IndexPage extends React.Component {
   render() {

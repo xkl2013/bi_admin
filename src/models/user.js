@@ -1,12 +1,12 @@
-import { message } from "antd";
-import { queryCurrent } from "../services/api";
+import { message } from 'antd';
+import { queryCurrent } from '../services/api';
 
 export default {
-  namespace: "user",
+  namespace: 'user',
 
   state: {
     collapsed: false,
-    currentUser: {}
+    currentUser: {},
   },
   effects: {
     *fetchCurrent(_, { call, put }) {
@@ -16,18 +16,18 @@ export default {
         message.error(response.msg);
       }
       yield put({
-        type: "saveCurrentUser",
-        payload: response
+        type: 'saveCurrentUser',
+        payload: response,
       });
-    }
+    },
   },
 
   reducers: {
     saveCurrentUser(state, action) {
       return {
         ...state,
-        currentUser: action.payload || {}
+        currentUser: action.payload || {},
       };
-    }
-  }
+    },
+  },
 };

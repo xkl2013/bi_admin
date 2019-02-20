@@ -1,37 +1,37 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Form, Tabs } from "antd";
-import classNames from "classnames";
-import LoginItem from "./LoginItem";
-import LoginTab from "./LoginTab";
-import LoginSubmit from "./LoginSubmit";
-import styles from "./index.less";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Form, Tabs } from 'antd';
+import classNames from 'classnames';
+import LoginItem from './LoginItem';
+import LoginTab from './LoginTab';
+import LoginSubmit from './LoginSubmit';
+import styles from './index.less';
 
 class Login extends Component {
   static propTypes = {
     className: PropTypes.string,
     defaultActiveKey: PropTypes.string,
     onTabChange: PropTypes.func,
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
   };
 
   static childContextTypes = {
     tabUtil: PropTypes.object,
     form: PropTypes.object,
-    updateActive: PropTypes.func
+    updateActive: PropTypes.func,
   };
 
   static defaultProps = {
-    className: "",
-    defaultActiveKey: "",
+    className: '',
+    defaultActiveKey: '',
     onTabChange: () => {},
-    onSubmit: () => {}
+    onSubmit: () => {},
   };
 
   state = {
     type: this.props.defaultActiveKey,
     tabs: [],
-    active: {}
+    active: {},
   };
 
   getChildContext() {
@@ -39,14 +39,14 @@ class Login extends Component {
       tabUtil: {
         addTab: id => {
           this.setState({
-            tabs: [...this.state.tabs, id]
+            tabs: [...this.state.tabs, id],
           });
         },
         removeTab: id => {
           this.setState({
-            tabs: this.state.tabs.filter(currentId => currentId !== id)
+            tabs: this.state.tabs.filter(currentId => currentId !== id),
           });
-        }
+        },
       },
       form: this.props.form,
       updateActive: activeItem => {
@@ -57,15 +57,15 @@ class Login extends Component {
           active[type] = [activeItem];
         }
         this.setState({
-          active
+          active,
         });
-      }
+      },
     };
   }
 
   onSwitch = type => {
     this.setState({
-      type
+      type,
     });
     this.props.onTabChange(type);
   };
@@ -74,13 +74,9 @@ class Login extends Component {
     e.preventDefault();
     const { active, type } = this.state;
     const activeFileds = active[type];
-    this.props.form.validateFields(
-      activeFileds,
-      { force: true },
-      (err, values) => {
-        this.props.onSubmit(err, values);
-      }
-    );
+    this.props.form.validateFields(activeFileds, { force: true }, (err, values) => {
+      this.props.onSubmit(err, values);
+    });
   };
 
   render() {

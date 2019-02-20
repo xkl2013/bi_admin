@@ -1,7 +1,7 @@
-import React from "react";
-import { Drawer } from "antd";
-import SiderMenu from "./SiderMenu";
-import { getFlatMenuKeys } from "./SiderMenuUtils";
+import React from 'react';
+import { Drawer } from 'antd';
+import SiderMenu from './SiderMenu';
+import { getFlatMenuKeys } from './SiderMenuUtils';
 
 const SiderMenuWrapper = React.memo(props => {
   const { isMobile, menuData, collapsed, onCollapse } = props;
@@ -13,14 +13,10 @@ const SiderMenuWrapper = React.memo(props => {
       onClose={() => onCollapse(true)}
       style={{
         padding: 0,
-        height: "100vh"
+        height: '100vh',
       }}
     >
-      <SiderMenu
-        {...props}
-        flatMenuKeys={flatMenuKeys}
-        collapsed={isMobile ? false : collapsed}
-      />
+      <SiderMenu {...props} flatMenuKeys={flatMenuKeys} collapsed={isMobile ? false : collapsed} />
     </Drawer>
   ) : (
     <SiderMenu {...props} flatMenuKeys={flatMenuKeys} />

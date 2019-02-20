@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import { Route, Switch } from "dva/router";
-import { getRoutes } from "utils/router.utils";
+import React, { PureComponent } from 'react';
+import { Route, Switch } from 'dva/router';
+import { getRoutes } from 'utils/router.utils';
 
 export default class RenderRoute extends PureComponent {
   render() {
@@ -9,12 +9,7 @@ export default class RenderRoute extends PureComponent {
     return (
       <Switch>
         {routes.map(item => (
-          <Route
-            key={item.key}
-            path={item.path}
-            component={item.component}
-            exact={item.exact}
-          />
+          <Route key={item.key} path={item.path} component={item.component} exact={item.exact} />
         ))}
       </Switch>
     );
