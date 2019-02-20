@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Alert } from "antd";
-import styles from "./passWordErrorAlert.less";
+import React, { Component } from 'react';
+import { Alert } from 'antd';
+import styles from './passWordErrorAlert.less';
 
 export default class PassWordErrorAlert extends Component {
   state = {};

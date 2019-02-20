@@ -1,15 +1,15 @@
-import defaultSettings from "@/config/defaultSettings";
+import defaultSettings from '@/config/defaultSettings';
 
 export default {
-  namespace: "setting",
+  namespace: 'setting',
 
   state: defaultSettings,
 
   effects: {
     *fetch(_, { put }) {
       // eslint-disable-line
-      yield put({ type: "save" });
-    }
+      yield put({ type: 'save' });
+    },
   },
 
   reducers: {
@@ -19,12 +19,12 @@ export default {
       Object.keys(state).forEach(key => {
         if (urlParams.searchParams.has(key)) {
           const value = urlParams.searchParams.get(key);
-          setting[key] = value === "1" ? true : value;
+          setting[key] = value === '1' ? true : value;
         }
       });
       return {
         ...state,
-        ...setting
+        ...setting,
       };
     },
     changeSetting(state, { payload }) {
@@ -35,7 +35,7 @@ export default {
         }
       });
       Object.keys(payload).forEach(key => {
-        if (key === "collapse") {
+        if (key === 'collapse') {
           return;
         }
         let value = payload[key];
@@ -48,13 +48,13 @@ export default {
       });
       const { contentWidth } = payload;
       if (state.contentWidth !== contentWidth && window.dispatchEvent) {
-        window.dispatchEvent(new Event("resize"));
+        window.dispatchEvent(new Event('resize'));
       }
-      window.history.replaceState(null, "setting", urlParams.href);
+      window.history.replaceState(null, 'setting', urlParams.href);
       return {
         ...state,
-        ...payload
+        ...payload,
       };
-    }
-  }
+    },
+  },
 };

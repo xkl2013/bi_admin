@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import { Redirect, Switch } from "dva/router";
-import { getRoutes } from "utils/router.utils";
-import Authorized from "utils/Authorized";
+import React, { PureComponent } from 'react';
+import { Redirect, Switch } from 'dva/router';
+import { getRoutes } from 'utils/router.utils';
+import Authorized from 'utils/Authorized';
 
 const { AuthorizedRoute } = Authorized;
 const redirectData = [];
@@ -10,7 +10,7 @@ const getRedirect = item => {
     if (item.redirect) {
       redirectData.push({
         from: `${item.path}`,
-        to: `${item.redirect}`
+        to: `${item.redirect}`,
       });
       item.children.forEach(children => {
         getRedirect(children);

@@ -1,19 +1,19 @@
 export default {
-  namespace: "global",
+  namespace: 'global',
 
   state: {
-    collapsed: false
+    collapsed: false,
   },
 
   reducers: {
     changeLayoutCollapsed(state, { payload }) {
       return {
         ...state,
-        collapsed: payload
+        collapsed: payload,
       };
     },
     save(state, action) {
       return { ...state, ...action.payload };
-    }
-  }
+    },
+  },
 };

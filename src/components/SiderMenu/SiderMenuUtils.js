@@ -1,5 +1,5 @@
-import pathToRegexp from "path-to-regexp";
-import { urlToList } from "../_utils/pathTools";
+import pathToRegexp from 'path-to-regexp';
+import { urlToList } from '../_utils/pathTools';
 
 /**
  * Recursively flatten the data
@@ -31,7 +31,7 @@ export const getMenuMatches = (flatMenuKeys, path) =>
 export const getDefaultCollapsedSubMenus = props => {
   const {
     location: { pathname },
-    flatMenuKeys
+    flatMenuKeys,
   } = props;
   return urlToList(pathname)
     .map(item => getMenuMatches(flatMenuKeys, item)[0])

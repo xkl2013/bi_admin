@@ -1,7 +1,7 @@
-import memoizeOne from "memoize-one";
-import isEqual from "lodash/isEqual";
+import memoizeOne from 'memoize-one';
+import isEqual from 'lodash/isEqual';
 // import { formatMessage } from 'umi/locale';
-import Authorized from "../utils/Authorized";
+import Authorized from '../utils/Authorized';
 
 const { check } = Authorized;
 // Conversion router to menu.
@@ -12,7 +12,7 @@ function formatter(data, parentAuthority, parentName) {
         return null;
       }
 
-      let locale = "menu";
+      let locale = 'menu';
       if (parentName) {
         locale = `${parentName}.${item.name}`;
       } else {
@@ -24,7 +24,7 @@ function formatter(data, parentAuthority, parentName) {
         // name: formatMessage({ id: locale, defaultMessage: item.name }),
         name: item.name,
         locale,
-        authority: item.authority || parentAuthority
+        authority: item.authority || parentAuthority,
       };
       if (item.routes) {
         const children = formatter(item.routes, item.authority, locale);
@@ -44,14 +44,10 @@ const memoizeOneFormatter = memoizeOne(formatter, isEqual);
  */
 const getSubMenu = item => {
   // doc: add hideChildrenInMenu
-  if (
-    item.children &&
-    !item.hideChildrenInMenu &&
-    item.children.some(child => child.name)
-  ) {
+  if (item.children && !item.hideChildrenInMenu && item.children.some(child => child.name)) {
     return {
       ...item,
-      children: filterMenuData(item.children) // eslint-disable-line
+      children: filterMenuData(item.children), // eslint-disable-line
     };
   }
   return item;
@@ -76,28 +72,28 @@ const filterMenuData = menuData => {
 };
 
 export default {
-  namespace: "menu",
+  namespace: 'menu',
 
   state: {
-    menuData: []
+    menuData: [],
   },
 
   effects: {
     *getMenuData({ payload }, { put }) {
       const { routes, authority } = payload;
       yield put({
-        type: "save",
-        payload: filterMenuData(memoizeOneFormatter(routes, authority))
+        type: 'save',
+        payload: filterMenuData(memoizeOneFormatter(routes, authority)),
       });
-    }
+    },
   },
 
   reducers: {
     save(state, action) {
       return {
         ...state,
-        menuData: action.payload
+        menuData: action.payload,
       };
-    }
-  }
+    },
+  },
 };

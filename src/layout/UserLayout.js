@@ -1,14 +1,14 @@
-import React from "react";
-import RouteDistribute from "@/components/RouteDistribute";
-import DocumentTitle from "react-document-title";
-import styles from "./styles/userLayout.less";
-import logoImg from "../assets/bg_logo.png";
+import React from 'react';
+import RouteDistribute from '@/components/RouteDistribute';
+import DocumentTitle from 'react-document-title';
+import styles from './styles/userLayout.less';
+import logoImg from '../assets/bg_logo.png';
 
 export default class UserLayout extends React.Component {
   getPageTitle() {
     const { routerData, location } = this.props;
     const { pathname } = location;
-    let title = "小德";
+    let title = '小德';
     if (routerData[pathname] && routerData[pathname].name) {
       title = `${routerData[pathname].name} - 小德`;
     }
@@ -25,9 +25,7 @@ export default class UserLayout extends React.Component {
                 <img src={logoImg} alt="小德logo" className={styles.logoImg} />
                 <div className={styles.loginContainer}>
                   <div className={styles.loginContent}>
-                    <span className={styles.header}>
-                      登录dva-admin后台管理系统
-                    </span>
+                    <span className={styles.header}>登录dva-admin后台管理系统</span>
                     <div className={styles.login}>
                       <RouteDistribute {...this.props} rootPath="/user" />
                     </div>
