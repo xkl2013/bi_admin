@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import classNames from "classnames";
-import { Dropdown, Avatar, Spin, Menu, Icon } from "antd";
-import styles from "./index.less";
+import React, { PureComponent } from 'react';
+import classNames from 'classnames';
+import { Dropdown, Avatar, Spin, Menu, Icon } from 'antd';
+import styles from './index.less';
 
 class RightContent extends PureComponent {
   menu = onMenuClick => (
@@ -20,10 +20,7 @@ class RightContent extends PureComponent {
 
   render() {
     const { currentUser, onMenuClick, navTheme } = this.props;
-    const className =
-      navTheme === "dark"
-        ? classNames(styles.right, styles.dark)
-        : styles.right;
+    const className = navTheme === 'dark' ? classNames(styles.right, styles.dark) : styles.right;
     return (
       <div className={className}>
         {currentUser.name ? (

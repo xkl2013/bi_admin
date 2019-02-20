@@ -1,9 +1,9 @@
-import { PureComponent } from "react";
-import { Icon } from "antd";
-import { Link } from "dva/router";
-import Debounce from "lodash-decorators/debounce";
-import RightContent from "./RightContent";
-import styles from "./index.less";
+import { PureComponent } from 'react';
+import { Icon } from 'antd';
+import { Link } from 'dva/router';
+import Debounce from 'lodash-decorators/debounce';
+import RightContent from './RightContent';
+import styles from './index.less';
 
 export default class GlobalHeader extends PureComponent {
   componentWillUnmount() {
@@ -20,8 +20,8 @@ export default class GlobalHeader extends PureComponent {
 
   @Debounce(600)
   triggerResizeEvent() {
-    const event = document.createEvent("HTMLEvents");
-    event.initEvent("resize", true, false);
+    const event = document.createEvent('HTMLEvents');
+    event.initEvent('resize', true, false);
     window.dispatchEvent(event);
   }
 
@@ -36,7 +36,7 @@ export default class GlobalHeader extends PureComponent {
         )}
         <Icon
           className={styles.trigger}
-          type={collapsed ? "menu-unfold" : "menu-fold"}
+          type={collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={this.toggle}
         />
         <RightContent {...this.props} />
