@@ -1,0 +1,22 @@
+// 配置参考  https://segmentfault.com/a/1190000017048871?utm_source=tag-newest
+// 所需依赖  npm install babel-core babel-loader --save
+// 编译依赖  npm install babel-preset-es2015 babel-preset-react babel-preset-stage-0 --save
+// babel-polyfill  增加对新api语法的支持
+// transform-decorators-legacy 增加对es7修饰器的编译
+// transform-runtime  选择性引入
+{
+    "presets": [
+      "env",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+        "transform-decorators-legacy",
+        ["transform-runtime", {
+          "helpers": false,
+          "polyfill": false,
+          "regenerator": true,
+          "moduleName": "babel-runtime"
+        }]
+      ]
+  }
